@@ -6,17 +6,15 @@ import com.crispytwig.dwellers.client.animation.BeetleAnimation;
 import com.crispytwig.dwellers.entity.Beetle;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.AgeableMob;
 
-public class BeetleModel <T extends Entity> extends HierarchicalModel<T> {
+public class BeetleModel<B extends AgeableMob> extends HierarchicalModel<Beetle> {
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Dwellers.MODID, "beetle"), "main");
 	private final ModelPart left_legs;
 	private final ModelPart right_legs;
@@ -89,8 +87,8 @@ public class BeetleModel <T extends Entity> extends HierarchicalModel<T> {
 	}
 
 	@Override
-	public void setupAnim(T pEntity, float pLimbSwing, float pLimbSwingAmount, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
+	public void setupAnim(Beetle pEntity, float pLimbSwing, float pLimbSwingAmount, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
 		this.root().getAllParts().forEach(ModelPart::resetPose);
-		this.animate(Beetle.walkAnimationState, BeetleAnimation.WALK, pAgeInTicks);
+		this.animate(pEntity.walkAnimationState, BeetleAnimation.WALK, pAgeInTicks);
 	}
 }

@@ -3,6 +3,7 @@ package com.crispytwig.dwellers.event;
 import com.crispytwig.dwellers.Dwellers;
 import com.crispytwig.dwellers.entity.Beetle;
 import com.crispytwig.dwellers.entity.Dweller;
+import com.crispytwig.dwellers.entity.Grub;
 import com.crispytwig.dwellers.init.EntityInit;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -17,6 +18,7 @@ public class CommonModEvents {
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
         event.put(EntityInit.DWELLER.get(), Dweller.createAttributes().build());
         event.put(EntityInit.BEETLE.get(), Beetle.createAttributes().build());
+        event.put(EntityInit.GRUB.get(), Grub.createAttributes().build());
     }
 
     @SubscribeEvent
